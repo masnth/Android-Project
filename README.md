@@ -5,17 +5,19 @@ This is my effort to create my own app to learn more about Java and Android.
 ## Getting Started
 
 
+
 ### Prerequisites
 
 
+
 ### Installing
-
-
 ## Running the tests
 
 
 
 ### Break down into end to end tests
+
+
 
 ### And coding style tests
 
