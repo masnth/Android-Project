@@ -2,13 +2,13 @@ package com.example.huynguyen.listapp;
 
 import android.content.Intent;
 import android.content.res.Resources;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,8 +17,9 @@ public class MainActivity extends AppCompatActivity {
     private ListView myListView;
     String[] items;
     String[] prices;
+    String[] notes;
     String[] descriptions;
-    String[] tempitems;
+    String[] tempItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,16 +29,26 @@ public class MainActivity extends AppCompatActivity {
         Resources res = getResources();
         myListView = (ListView) findViewById(R.id.myListView);
         String[] res_items = res.getStringArray(R.array.items);
-        if (tempitems == null) {
+        if (tempItems == null) {
             items = res_items;
         }
         else {
-            items = tempitems;
+            items = tempItems;
         }
 
+        int len = items.length;
 
-        prices = res.getStringArray(R.array.prices);
-        descriptions = res.getStringArray(R.array.description);
+        //prices = res.getStringArray(R.array.prices);
+        prices = new String[len];
+        for (int i = 0; i < len; i++) {
+            prices[i] = "Note " + Integer.toString(i);
+        }
+
+        //descriptions = res.getStringArray(R.array.description);
+        descriptions = new String[len];
+        for (int i = 0; i < len; i++) {
+            descriptions[i] = "Importance level: " + Integer.toString(i);
+        }
 
         itemAdapter = new ItemAdapter(this, items, prices, descriptions);
         myListView.setAdapter(itemAdapter);
@@ -69,9 +80,9 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 1) {
             if(resultCode == RESULT_OK) {
                 String newItem = data.getStringExtra("com.example.huynguyen.NEW_ITEM");
-                tempitems = Arrays.copyOf(items, items.length + 1);
-                tempitems[items.length] = newItem;
-                items = tempitems;
+                tempItems = Arrays.copyOf(items, items.length + 1);
+                tempItems[items.length] = newItem;
+                items = tempItems;
                 prices = new String[] {"0.1", "0.2", "0.3", "0.4"};
                 descriptions = new String[] {"a", "b", "c", "d"};
                 itemAdapter.setItem(items);

@@ -1,7 +1,6 @@
 package com.example.huynguyen.listapp;
 
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,15 +50,15 @@ public class ItemAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View v = mInflater.inflate(R.layout.my_listview_detail, null);
-        TextView nameTextView = (TextView) v.findViewById(R.id.nameTextView);
+        TextView timeTextView = (TextView) v.findViewById(R.id.timeTextView);
         TextView descriptionTextView = (TextView) v.findViewById(R.id.descriptionTextView);
         TextView priceTextView = (TextView) v.findViewById(R.id.priceTextView);
 
-        String name = items[position];
+        String time = items[position];
         String desc = descriptions[position];
         String price = prices[position];
 
-        nameTextView.setText(name);
+        timeTextView.setText(time);
         descriptionTextView.setText(desc);
         priceTextView.setText(price);
 
